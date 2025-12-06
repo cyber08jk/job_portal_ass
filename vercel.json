@@ -1,45 +1,22 @@
 {
-  "version": 2,
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/build",
-  "builds": [
+  "rewrites": [
     {
-      "src": "Backend/server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "Backend/server.js"
+      "source": "/api/(.*)",
+      "destination": "/api/server"
     },
     {
-      "src": "/auth/(.*)",
-      "dest": "Backend/server.js"
+      "source": "/auth/(.*)",
+      "destination": "/api/server"
     },
     {
-      "src": "/jobs/(.*)",
-      "dest": "Backend/server.js"
+      "source": "/jobs/:path*",
+      "destination": "/api/server"
     },
     {
-      "src": "/jobs",
-      "dest": "Backend/server.js"
-    },
-    {
-      "src": "/apply/(.*)",
-      "dest": "Backend/server.js"
-    },
-    {
-      "src": "/apply",
-      "dest": "Backend/server.js"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "frontend/build/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/build/index.html"
+      "source": "/apply/:path*",
+      "destination": "/api/server"
     }
   ]
 }
