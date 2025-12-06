@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import JobList from './pages/JobList';
 import JobDetails from './pages/JobDetails';
 import Login from './pages/Login';
