@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import API_URL from "../config";
 
 function Login({ setUser }) {
   // Form state
@@ -19,7 +20,7 @@ function Login({ setUser }) {
 
     try {
       // Send login request to backend
-      const response = await axios.post("http://localhost:5000/auth/login", {
+      const response = await axios.post(`${API_URL}/auth/login`, {
         email,
         password
       });

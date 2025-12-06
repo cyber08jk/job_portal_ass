@@ -1,9 +1,3 @@
-/*
-  Job Model
-  ---------
-  Defines the structure for job postings in our database.
-  Each job has a title, company name, location, and description.
-*/
 
 const mongoose = require("mongoose");
 

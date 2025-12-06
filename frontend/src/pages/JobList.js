@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../config';
 
 function JobList() {
   // State to store jobs from API
@@ -16,7 +17,7 @@ function JobList() {
   // Function to get all jobs from backend
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/jobs');
+      const response = await axios.get(`${API_URL}/jobs`);
       setJobs(response.data);
       setLoading(false);
     } catch (err) {

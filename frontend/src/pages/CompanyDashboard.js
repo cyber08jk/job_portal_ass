@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import API_URL from "../config";
 
 function CompanyDashboard({ user }) {
   // State for jobs and applications
@@ -21,13 +22,13 @@ function CompanyDashboard({ user }) {
       try {
         // Get jobs posted by this company
         const jobsResponse = await axios.get(
-          `http://localhost:5000/jobs/company/${user.id}`
+          `${API_URL}/jobs/company/${user.id}`
         );
         setJobs(jobsResponse.data);
 
         // Get applications for company's jobs
         const appsResponse = await axios.get(
-          `http://localhost:5000/apply/company/${user.id}`
+          `${API_URL}/apply/company/${user.id}`
         );
         setApplications(appsResponse.data);
 
@@ -48,7 +49,7 @@ function CompanyDashboard({ user }) {
     setFormSuccess("");
 
     try {
-      const response = await axios.post("http://localhost:5000/jobs", {
+      const response = await axios.post(`${API_URL}/jobs`, {
         title,
         company: user.name,
         location,

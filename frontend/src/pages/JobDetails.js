@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../config';
 
 function JobDetails({ user }) {
   // Get job ID from URL
@@ -24,7 +25,7 @@ function JobDetails({ user }) {
   useEffect(() => {
     const getJobDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/jobs/${id}`);
+        const response = await axios.get(`${API_URL}/jobs/${id}`);
         setJob(response.data);
         setLoading(false);
       } catch (err) {
@@ -64,7 +65,7 @@ function JobDetails({ user }) {
         jobId: id
       };
 
-      await axios.post('http://localhost:5000/apply', applicationData);
+      await axios.post(`${API_URL}/apply`, applicationData);
       
       setMessage('Application submitted successfully!');
       setFormData({ name: '', email: '', resume: '' });
